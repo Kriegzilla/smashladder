@@ -9,7 +9,7 @@ RSpec.describe Game, type: :model do
   it { should validate_presence_of(:player_1_stock) }
   it { should validate_presence_of(:player_2_stock) }
   it { should validate_presence_of(:stage_id) }
-  
-  it { should have_many(:games) }
+
+  it { should belong_to(:stage) }
 
 end
