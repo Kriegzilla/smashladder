@@ -15,3 +15,12 @@
  *= require foundation_and_overrides
 
  */
+
+ body {
+  background: url("/background.png") no-repeat center fixed;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-color: black;
+}
