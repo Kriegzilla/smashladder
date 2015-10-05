@@ -40,6 +40,10 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'coveralls', require: false
+end
+
 
 gem 'devise'
 gem 'foundation-rails'
