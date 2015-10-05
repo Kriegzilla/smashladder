@@ -15,12 +15,16 @@
  *= require foundation_and_overrides
 
  */
+$white: #fff;
+$black: #000;
+$gray: #808080;
 
- body {
+body {
   background: url("/background.png") no-repeat center fixed;
+  background-color: $black;
   -moz-background-size: cover;
   -o-background-size: cover;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: black;
+
 }
