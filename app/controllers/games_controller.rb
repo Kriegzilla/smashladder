@@ -9,6 +9,8 @@ class GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     @game.player_1_id = current_user.id
+    @users = User.where.not(id: current_user.id)
+    @stages = Stage.all
     if @game.save
       flash[:success] = "Game saved!"
       redirect_to users_path
