@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20151005151238) do
   end
 
   create_table "stages", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "type", null: false
+    t.string "name",     null: false
+    t.string "legality", null: false
   end
 
   add_index "stages", ["name"], name: "index_stages_on_name", unique: true, using: :btree
