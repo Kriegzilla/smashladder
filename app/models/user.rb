@@ -7,8 +7,6 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :username, presence: true, length: { maximum: 20 }
 
-  scope :not_me, -> { where.not(id: current_user.id) }
-
   def games
     Game.find(:conditions => ["player_1_id = ? OR player_2_id = ?", id, id])
   end

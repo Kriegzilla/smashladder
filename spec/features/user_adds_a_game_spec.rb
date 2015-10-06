@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user adds a game', %Q{
+feature 'user adds a game', %{
   As an authenticated user
   I want to add a completed game
   So that I can keep track of who I've played and the results
@@ -26,7 +26,6 @@ feature 'user adds a game', %Q{
     find('#game_player_1_stock_4').click
     find('#game_player_2_stock_0').click
     select "Final Destination", from: "Stage"
-    save_and_open_page
     click_on "Submit"
 
   end

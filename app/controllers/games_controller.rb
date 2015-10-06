@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-
   def new
     @game = Game.new
     @users = User.where.not(id: current_user.id)
@@ -20,12 +19,16 @@ class GamesController < ApplicationController
     end
   end
 
-
   protected
 
   def game_params
-    params.require(:game).permit(:player_2_id,
-    :player_1_character, :player_2_character, :player_1_stock, :player_2_stock,
-    :stage_id)
+    params.require(:game).permit(
+      :player_2_id,
+      :player_1_character,
+      :player_2_character,
+      :player_1_stock,
+      :player_2_stock,
+      :stage_id
+      )
   end
 end

@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
     "Young Link", "Pichu", "Pikachu", "Jigglypuff", "Mewtwo",
     "Mr. Game & Watch", "Marth", "Roy"
   ]
-  STOCK = [4,3,2,1,0]
+  STOCK = [4, 3, 2, 1, 0]
 
   belongs_to :stage
   validates :player_1_id, presence: true
@@ -32,5 +32,4 @@ class Game < ActiveRecord::Base
       User.find(player_2_id)
     end
   end
-
 end
