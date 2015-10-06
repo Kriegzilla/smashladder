@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row">
+      <div class="panel small-9 small-centered large-centered columns">
+        <table id="leaderboard">
+            <h1>
+              Games:
+            </h1>
+            <td>
+              Player 1
+            </td>
+            <td>
+              Player 2
+            </td>
+          <% @games.each do |game| %>
+            <tr id="<%= game.id %>">
+              <td class="p1">
+                <% if game.winner.id == game.player_1_id %>
+                <%= "#{User.find(game.player_1_id).username} (W)" %>
+                <% else %>
+                <%= "#{User.find(game.player_1_id).username} (L)" %>
+                <% end %>
+              </td>
+              <td class="p2">
+                <% if game.winner.id == game.player_2_id %>
+                <%= "#{User.find(game.player_2_id).username} (W)" %>
+                <% else %>
+                <%= "#{User.find(game.player_2_id).username} (L)" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
