@@ -11,7 +11,7 @@ FactoryGirl.define do
 
   factory :stage do
     name "Final Destination"
-    type "Neutral"
+    legality "Neutral"
   end
 
   factory :game do

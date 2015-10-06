@@ -1,0 +1,21 @@
+<%= form_for @game do |f| %>
+  <%= f.label :player_2_id, "Player 2" %>
+  <%= f.collection_select :player_2_id, @users, :id, :username, prompt: true %>
+  <br>
+  <%= f.label :player_1_character, "Your Character" %>
+  <%= f.select :player_1_character, Game::CHARACTERS %>
+  <br>
+  <%= f.label :player_2_character, "Player 2's Character" %>
+  <%= f.select :player_2_character, Game::CHARACTERS %>
+  <br>
+  <%= f.label :player_1_stock, "Your Remaining Stock" %>
+  <%= f.collection_radio_buttons :player_1_stock, Game::STOCK, :to_i, :to_s %>
+  <br>
+  <%= f.label :player_2_stock, "P2 Remaining Stock" %>
+  <%= f.collection_radio_buttons :player_2_stock, Game::STOCK, :to_i, :to_s %>
+  <br>
+  <%= f.label :stage_id, "Stage" %>
+  <%= f.collection_select :stage_id, @stages, :id, :name %>
+  <br>
+  <%= f.submit "Submit", class: "button small round expand success" %>
+<% end %>
