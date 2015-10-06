@@ -1,4 +1,8 @@
 class GamesController < ApplicationController
+  def index
+    @games = Game.all.reverse
+  end
+
   def new
     @game = Game.new
     @users = User.where.not(id: current_user.id)
@@ -12,7 +16,7 @@ class GamesController < ApplicationController
     @stages = Stage.all
     if @game.save
       flash[:success] = "Game saved!"
-      redirect_to users_path
+      redirect_to games_path
     else
       flash[:alert] = @game.errors.full_messages.join(", ")
       render :new
