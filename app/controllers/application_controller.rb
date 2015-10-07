@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
    devise_parameter_sanitizer.for(:account_update) << [
      :username,
      :avatar,
-     :crew_tag
+     :crew_tag,
+     :character_id
    ]
   end
 end

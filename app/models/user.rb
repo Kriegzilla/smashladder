@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :username, presence: true, length: { maximum: 20 }
 
+  belongs_to :character
+
   def games
     Game.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
