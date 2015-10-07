@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   validates :username, presence: true, length: { maximum: 20 }
 
   def games
-    Game.find(:conditions => ["player_1_id = ? OR player_2_id = ?", id, id])
+    Game.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
 end

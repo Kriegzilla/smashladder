@@ -14,6 +14,12 @@ feature 'user adds a game', %{
 } do
   before { FactoryGirl.create(:stage) }
 
+  scenario 'user tries to submit while logged out' do
+    visit new_game_path
+
+    expect(page).to have_content('need to sign in or sign up before continuing')
+  end
+
   scenario 'user submits a game' do
     user = FactoryGirl.create(:user)
     user2 = FactoryGirl.create(:user)
@@ -23,10 +29,21 @@ feature 'user adds a game', %{
     select "#{user2.username}", from: "Player 2"
     select "Fox", from: "Your Character"
     select "Falco", from: "Player 2's Character"
-    find('#game_player_1_stock_4').click
-    find('#game_player_2_stock_0').click
+    select "4", from: "Your Remaining Stock"
+    select "0", from: "P2 Remaining Stock"
     select "Final Destination", from: "Stage"
     click_on "Submit"
 
+    expect(page).to have_content("Game saved!")
+  end
+
+  scenario 'user submits an incomplete form' do
+    user = FactoryGirl.create(:user)
+    login(user)
+
+    click_on "Add a Game"
+    click_on "Submit"
+
+    expect(page).to have_content("Player 2 can't be blank")
   end
 end
