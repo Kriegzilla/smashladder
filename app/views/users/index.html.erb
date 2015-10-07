@@ -26,9 +26,9 @@
               <td class="username">
                 <% if user.crew_tag != nil %>
                   <%= user.crew_tag %>
-                  <%= user.username %>
+                  <%= link_to user.username, user_path(user) %>
                 <% else %>
-                  <%= user.username %>
+                  <%= link_to user.username, user_path(user) %>
                 <% end %>
               </td>
               <td class="wins">
