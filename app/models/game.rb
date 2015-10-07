@@ -1,11 +1,5 @@
 class Game < ActiveRecord::Base
-  CHARACTERS = [
-    "Dr. Mario", "Mario", "Luigi", "Bowser", "Peach", "Yoshi",
-    "Donkey Kong", "Captain Falcon", "Ganondorf", "Falco", "Fox",
-    "Ness", "Ice Climbers", "Kirby", "Samus", "Zelda", "Link",
-    "Young Link", "Pichu", "Pikachu", "Jigglypuff", "Mewtwo",
-    "Mr. Game & Watch", "Marth", "Roy"
-  ]
+
   STOCK = [4, 3, 2, 1, 0]
 
   belongs_to :stage
@@ -43,7 +37,15 @@ class Game < ActiveRecord::Base
     User.find(player_1_id)
   end
 
+  def player_1_character
+    Character.find(player_1_character_id)
+  end
+
   def player_2
     User.find(player_2_id)
+  end
+
+  def player_2_character
+    Character.find(player_2_character_id)
   end
 end

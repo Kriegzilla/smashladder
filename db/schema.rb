@@ -11,19 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151005151238) do
+ActiveRecord::Schema.define(version: 20151007200140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "characters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon", null: false
+  end
+
   create_table "games", force: :cascade do |t|
-    t.integer "player_1_id",        null: false
-    t.integer "player_2_id",        null: false
-    t.string  "player_1_character", null: false
-    t.string  "player_2_character", null: false
-    t.integer "stage_id",           null: false
-    t.integer "player_1_stock",     null: false
-    t.integer "player_2_stock",     null: false
+    t.integer "player_1_id",           null: false
+    t.integer "player_2_id",           null: false
+    t.integer "player_1_character_id", null: false
+    t.integer "player_2_character_id", null: false
+    t.integer "stage_id",              null: false
+    t.integer "player_1_stock",        null: false
+    t.integer "player_2_stock",        null: false
   end
 
   create_table "stages", force: :cascade do |t|
@@ -51,6 +56,7 @@ ActiveRecord::Schema.define(version: 20151005151238) do
     t.string   "crew_tag"
     t.integer  "wins",                   default: 0,                                                        null: false
     t.integer  "losses",                 default: 0,                                                        null: false
+    t.integer  "character"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

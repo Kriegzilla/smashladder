@@ -31,10 +31,29 @@ Stage.create(name: "Vemon", legality: "Gentleman")
 Stage.create(name: "Yoshi's Island (pipes)", legality: "Gentleman")
 Stage.create(name: "Yoshi's Island (N64)", legality: "Gentleman")
 
-   "Mario", "Luigi", "Bowser", "Peach", "Yoshi",
-  "Donkey Kong", "Captain Falcon", "Ganondorf", "Falco", "Fox",
-  "Ness", "Ice Climbers", "Kirby", "Samus", "Zelda", "Link",
-  "Young Link", "Pichu", "Pikachu", "Jigglypuff", "Mewtwo",
-  "Mr. Game & Watch", "Marth", "Roy"
-]
-Character.create(name: "Dr. Mario", icon: "/ssbm_icons/doctor_mario")
+Character.create(name: "Dr. Mario", icon: "/ssbm_icons/dr_mario_icon.jpg")
+Character.create(name: "Mario", icon: "/ssbm_icons/mario_icon.jpg")
+Character.create(name: "Luigi", icon: "/ssbm_icons/luigi_icon.jpg")
+Character.create(name: "Bowser", icon: "/ssbm_icons/bowser_icon.jpg")
+Character.create(name: "Peach", icon: "/ssbm_icons/peach_icon.jpg")
+Character.create(name: "Yoshi", icon: "/ssbm_icons/yoshi_icon.jpg")
+Character.create(name: "Donkey Kong", icon: "/ssbm_icons/donkey_kong_icon.jpg")
+Character.create(name: "Captain Falcon", icon: "/ssbm_icons/captain_falcon_icon.jpg")
+Character.create(name: "Ganondorf", icon: "/ssbm_icons/ganondorf_icon.jpg")
+Character.create(name: "Falco", icon: "/ssbm_icons/falco_icon.jpg")
+Character.create(name: "Fox", icon: "/ssbm_icons/fox_icon.jpg")
+Character.create(name: "Ness", icon: "/ssbm_icons/ness_icon.jpg")
+Character.create(name: "Ice Climbers", icon: "/ssbm_icons/ice_climbers_icon.jpg")
+Character.create(name: "Kirby", icon: "/ssbm_icons/kirby_icon.jpg")
+Character.create(name: "Samus", icon: "/ssbm_icons/samus_icon.jpg")
+Character.create(name: "Zelda", icon: "/ssbm_icons/zelda_icon.jpg")
+Character.create(name: "Sheik", icon: "/ssbm_icons/sheik_icon.jpg")
+Character.create(name: "Link", icon: "/ssbm_icons/link_icon.jpg")
+Character.create(name: "Young Link", icon: "/ssbm_icons/young_link_icon.jpg")
+Character.create(name: "Pichu", icon: "/ssbm_icons/pichu_icon.jpg")
+Character.create(name: "Pikachu", icon: "/ssbm_icons/pikachu_icon.jpg")
+Character.create(name: "Jigglypuff", icon: "/ssbm_icons/jigglypuff_icon.jpg")
+Character.create(name: "Mewtwo", icon: "/ssbm_icons/mewtwo_icon.jpg")
+Character.create(name: "Mr. Game & Watch", icon: "/ssbm_icons/game_and_watch_icon.jpg")
+Character.create(name: "Marth", icon: "/ssbm_icons/marth_icon.jpg")
+Character.create(name: "Roy", icon: "/ssbm_icons/roy_icon.jpg")
