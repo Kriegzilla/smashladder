@@ -9,6 +9,9 @@
         <%= @user.username %></h1>
       <% end %>
     <h3 class="section-title"><%= @user.email %></h3>
+    <% if @user.character %>
+      <h3 class="section-title">Main: <%= image_tag @user.character.icon %></h3>
+    <% end %>
   </div>
   <table class="panel small-9 small-centered large-centered columns">
     <tr>
@@ -39,23 +42,29 @@
               <legend>Account Settings</legend>
 
               <div>
-                <div class="large-4 columns">
+                <div class="large-6 columns">
                   <div class="field">
                     <%= f.label :crew_tag %><br />
                     <%= f.text_field :crew_tag %>
                   </div>
                 </div>
-                <div class="large-8 columns">
+                <div class="large-6 columns">
                   <div class="field">
                     <%= f.label :username %>
                     <i>(20 characters maximum)</i><br />
                     <%= f.text_field :username %>
                   </div>
                 </div>
-                <div class="large-12 columns">
+                <div class="large-6 columns">
                   <div class="field">
                     <%= f.label :email %><br />
                     <%= f.email_field :email, autofocus: true %>
+                  </div>
+                </div>
+                <div class="large-6 columns">
+                  <div class="field">
+                    <%= f.label :character_id, "Your Main"%><br />
+                    <%= f.collection_select :character_id, Character.all, :id, :name %>
                   </div>
                 </div>
               </div>

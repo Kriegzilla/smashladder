@@ -4,5 +4,6 @@ class CreateCharacters < ActiveRecord::Migration
       t.string :name, null: false
       t.string :icon, null: false
     end
+    add_index(:characters, :name, unique: true)
   end
 end

@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20151007200140) do
     t.string "icon", null: false
   end
 
+  add_index "characters", ["name"], name: "index_characters_on_name", unique: true, using: :btree
+
   create_table "games", force: :cascade do |t|
     t.integer "player_1_id",           null: false
     t.integer "player_2_id",           null: false
@@ -56,7 +58,7 @@ ActiveRecord::Schema.define(version: 20151007200140) do
     t.string   "crew_tag"
     t.integer  "wins",                   default: 0,                                                        null: false
     t.integer  "losses",                 default: 0,                                                        null: false
-    t.integer  "character"
+    t.integer  "character_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
