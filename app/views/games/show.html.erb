@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="section-box text-center panel large-6 medium-8 small-12
+  large-centered medium-centered small-centered columns">
+  <%= @game.players %>
+  </div>
+  <table class="panel small-9 small-centered large-centered columns">
+    <tr>
+      <td>
+        Players:
+      </td>
+      <td>
+        <%= @game.player_1.crew_tag %><%= @game.player_1.username %>
+      </td>
+      <td>
+        <%= @game.player_2.crew_tag %><%= @game.player_2.username %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Characters:
+      </td>
+      <td>
+        <%= @game.player_1_character %>
+      </td>
+      <td>
+        <%= @game.player_2_character %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Stock Remaining:
+      </td>
+      <td>
+        <% @game.player_1_stock.times do %>
+          <%= image_tag "/ssbm_icons/bowser_icon.jpg" %>
+        <% end %>
+      </td>
+      <td>
+        <% @game.player_2_stock.times do %>
+          <%= image_tag "/ssbm_icons/bowser_icon.jpg" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Stage:
+      </td>
+      <td>
+        <%= @game.stage.name %>
+      </td>
+    </tr>
+  </table>
+</div>
