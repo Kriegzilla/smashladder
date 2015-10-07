@@ -28,6 +28,9 @@
                 <%= "#{User.find(game.player_2_id).username} (L)" %>
                 <% end %>
               </td>
+              <td>
+                <%= link_to "Details", game_path(game) %>
+              </td>
             </tr>
           <% end %>
         </table>

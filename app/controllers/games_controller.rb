@@ -3,6 +3,10 @@ class GamesController < ApplicationController
     @games = Game.all.reverse
   end
 
+  def show
+    @game = Game.find(params[:id])
+  end
+
   def new
     if signed_in?
       @game = Game.new

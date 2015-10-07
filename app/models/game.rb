@@ -38,4 +38,12 @@ class Game < ActiveRecord::Base
     p2 = User.find(player_2_id)
     "#{p1.username} vs. #{p2.username}"
   end
+
+  def player_1
+    User.find(player_1_id)
+  end
+
+  def player_2
+    User.find(player_2_id)
+  end
 end
