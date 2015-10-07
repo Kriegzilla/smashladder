@@ -2,11 +2,11 @@
   <%= f.label :player_2_id, "Player 2" %>
   <%= f.collection_select :player_2_id, @users, :id, :username, prompt: true %>
   <br>
-  <%= f.label :player_1_character, "Your Character" %>
-  <%= f.select :player_1_character, Game::CHARACTERS %>
+  <%= f.label :player_1_character_id, "Your Character" %>
+  <%= f.collection_select :player_1_character_id, Character.all, :id, :name %>
   <br>
-  <%= f.label :player_2_character, "Player 2's Character" %>
-  <%= f.select :player_2_character, Game::CHARACTERS %>
+  <%= f.label :player_2_character_id, "Player 2's Character" %>
+  <%= f.collection_select :player_2_character_id, Character.all, :id, :name %>
   <br>
   <%= f.label :player_1_stock, "Your Remaining Stock" %>
   <%= f.collection_select :player_1_stock, Game::STOCK, :to_i, :to_s %>

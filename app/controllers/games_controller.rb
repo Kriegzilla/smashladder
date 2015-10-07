@@ -47,8 +47,8 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(
       :player_2_id,
-      :player_1_character,
-      :player_2_character,
+      :player_1_character_id,
+      :player_2_character_id,
       :player_1_stock,
       :player_2_stock,
       :stage_id

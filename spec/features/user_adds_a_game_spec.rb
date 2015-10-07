@@ -12,7 +12,11 @@ feature 'user adds a game', %{
     [x] I must see an error if I submit an incorrect form
     [x] I must be brought to the game's details page after submission
 } do
-  before { FactoryGirl.create(:stage) }
+  before do
+    FactoryGirl.create(:stage)
+    Character.create(name: "Fox", icon: "/ssbm_icons/fox_icon.jpg")
+    Character.create(name: "Falco", icon: "/ssbm_icons/falco_icon.jpg")
+  end
 
   scenario 'user tries to submit while logged out' do
     visit new_game_path
