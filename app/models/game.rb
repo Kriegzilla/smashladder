@@ -1,5 +1,4 @@
 class Game < ActiveRecord::Base
-
   STOCK = [4, 3, 2, 1, 0]
 
   belongs_to :stage
