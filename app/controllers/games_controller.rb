@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-
   def index
     @games = Game.all.reverse
   end
@@ -23,11 +22,11 @@ class GamesController < ApplicationController
       p1 = current_user
       p2 = User.find(@game.player_2_id)
       if @game.winner == p1
-        p1.wins +=1
-        p2.losses +=1
+        p1.wins += 1
+        p2.losses += 1
       else
-        p1.losses +=1
-        p2.wins +=1
+        p1.losses += 1
+        p2.wins += 1
       end
       p1.save
       p2.save
