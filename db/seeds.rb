@@ -30,3 +30,11 @@ Stage.create(name: "Temple", legality: "Gentleman")
 Stage.create(name: "Vemon", legality: "Gentleman")
 Stage.create(name: "Yoshi's Island (pipes)", legality: "Gentleman")
 Stage.create(name: "Yoshi's Island (N64)", legality: "Gentleman")
+
+   "Mario", "Luigi", "Bowser", "Peach", "Yoshi",
+  "Donkey Kong", "Captain Falcon", "Ganondorf", "Falco", "Fox",
+  "Ness", "Ice Climbers", "Kirby", "Samus", "Zelda", "Link",
+  "Young Link", "Pichu", "Pikachu", "Jigglypuff", "Mewtwo",
+  "Mr. Game & Watch", "Marth", "Roy"
+]
+Character.create(name: "Dr. Mario", icon: "/ssbm_icons/doctor_mario")
