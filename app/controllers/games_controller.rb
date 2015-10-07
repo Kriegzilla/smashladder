@@ -1,12 +1,17 @@
 class GamesController < ApplicationController
+
   def index
     @games = Game.all.reverse
   end
 
   def new
-    @game = Game.new
-    @users = User.where.not(id: current_user.id)
-    @stages = Stage.all
+    if signed_in?
+      @game = Game.new
+      @users = User.where.not(id: current_user.id)
+      @stages = Stage.all
+    else
+      authenticate_user!
+    end
   end
 
   def create
