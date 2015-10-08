@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007200140) do
+ActiveRecord::Schema.define(version: 20151008144130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151007200140) do
   create_table "stages", force: :cascade do |t|
     t.string "name",     null: false
     t.string "legality", null: false
+    t.string "icon",     null: false
   end
 
   add_index "stages", ["name"], name: "index_stages_on_name", unique: true, using: :btree
