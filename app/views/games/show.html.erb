@@ -1,7 +1,9 @@
 <div class="row">
   <div class="section-box text-center panel large-6 medium-8 small-12
   large-centered medium-centered small-centered columns">
+  <%= image_tag @game.player_1.avatar, class: "thumbnail" %>
   <%= @game.players %>
+  <%= image_tag @game.player_2.avatar, class: "thumbnail" %>
   <% if @game.player_2 == current_user && @game.p2_confirmation == false %>
     <%= button_to "Approve this!", game_approve_path(@game), class: "button"%>
   <% end %>
@@ -56,4 +58,8 @@
       </td>
     </tr>
   </table>
+  <div class="panel small-9 small-centered large-centered columns">
+    Description:
+    <%= @game.description %>
+  </div>
 </div>

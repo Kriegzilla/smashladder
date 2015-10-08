@@ -9,6 +9,7 @@ class Game < ActiveRecord::Base
   validates :player_1_stock, presence: true
   validates :player_2_stock, presence: true
   validates :stage_id, presence: true
+  validates :description, length: { maximum: 500 }
 
   def winner
     if player_1_stock < player_2_stock
