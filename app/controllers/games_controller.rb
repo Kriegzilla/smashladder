@@ -65,7 +65,8 @@ class GamesController < ApplicationController
       :player_2_character_id,
       :player_1_stock,
       :player_2_stock,
-      :stage_id
+      :stage_id,
+      :description
       )
   end
 end
