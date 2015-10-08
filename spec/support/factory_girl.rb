@@ -12,6 +12,7 @@ FactoryGirl.define do
   factory :stage do
     name "Final Destination"
     legality "Neutral"
+    icon "/stage_icons/final_destination_icon.jpg"
   end
 
   factory :game do
