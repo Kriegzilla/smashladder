@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008144130) do
+ActiveRecord::Schema.define(version: 20151008155140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,13 +24,14 @@ ActiveRecord::Schema.define(version: 20151008144130) do
   add_index "characters", ["name"], name: "index_characters_on_name", unique: true, using: :btree
 
   create_table "games", force: :cascade do |t|
-    t.integer "player_1_id",           null: false
-    t.integer "player_2_id",           null: false
-    t.integer "player_1_character_id", null: false
-    t.integer "player_2_character_id", null: false
-    t.integer "stage_id",              null: false
-    t.integer "player_1_stock",        null: false
-    t.integer "player_2_stock",        null: false
+    t.integer "player_1_id",                           null: false
+    t.integer "player_2_id",                           null: false
+    t.integer "player_1_character_id",                 null: false
+    t.integer "player_2_character_id",                 null: false
+    t.integer "stage_id",                              null: false
+    t.integer "player_1_stock",                        null: false
+    t.integer "player_2_stock",                        null: false
+    t.boolean "p2_confirmation",       default: false
   end
 
   create_table "stages", force: :cascade do |t|

@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all.reverse
+    @games = Game.all.where(p2_confirmation: true).reverse
   end
 
   def show
@@ -23,8 +23,25 @@ class GamesController < ApplicationController
     @users = User.where.not(id: current_user.id)
     @stages = Stage.all
     if @game.save
-      p1 = current_user
-      p2 = User.find(@game.player_2_id)
+      flash[:success] = "Game saved!"
+      redirect_to games_path
+    else
+      flash[:alert] = @game.errors.full_messages.join(", ")
+      render :new
+    end
+  end
+
+  def pending_games
+    @games = current_user.games.where(p2_confirmation: false).reverse
+  end
+
+  def approve
+    @game = Game.find(params[:game_id])
+    if current_user == @game.player_2
+      @game.p2_confirmation = true
+      @game.save
+      p1 = User.find(@game.player_1_id)
+      p2 = current_user
       if @game.winner == p1
         p1.wins += 1
         p2.losses += 1
@@ -34,12 +51,9 @@ class GamesController < ApplicationController
       end
       p1.save
       p2.save
-      flash[:success] = "Game saved!"
-      redirect_to games_path
-    else
-      flash[:alert] = @game.errors.full_messages.join(", ")
-      render :new
+      flash[:success] = "Game Approved!"
     end
+    redirect_to users_path
   end
 
   protected
