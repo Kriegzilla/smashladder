@@ -5,7 +5,10 @@
   <%= @game.players %>
   <%= image_tag @game.player_2.avatar, class: "thumbnail" %>
   <% if @game.player_2 == current_user && @game.p2_confirmation == false %>
-    <%= button_to "Approve this!", game_approve_path(@game), class: "button"%>
+    <%= button_to "Approve this!", game_approve_path(@game), class: "button small"%>
+  <% end %>
+  <% if @game.player_1 == current_user && @game.p2_confirmation == false || @game.player_2 == current_user && @game.p2_confirmation == false %>
+    <%= button_to "Delete this?", @game, method: :delete, class: "button tiny alert" %>
   <% end %>
   </div>
   <table class="panel small-9 small-centered large-centered columns">
