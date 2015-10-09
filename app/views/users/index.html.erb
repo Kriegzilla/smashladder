@@ -24,7 +24,7 @@
           <% @users.each do |user| %>
             <tr id="<%= user.id %>">
               <td class="rank">
-                1
+                <%= user.rank %>
               </td>
               <td class="username">
                 <% if user.crew_tag != nil %>
