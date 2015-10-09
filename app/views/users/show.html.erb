@@ -57,7 +57,7 @@
                 </div>
                 <div class="large-6 columns">
                   <div class="field">
-                    <%= f.label :email %><br />
+                    <%= f.label :email, "New Email Address" %><br />
                     <%= f.email_field :email, autofocus: true %>
                   </div>
                 </div>
@@ -72,7 +72,7 @@
               <div>
                 <div class="large-6 columns">
                   <div class="field">
-                    <%= f.label :password %>
+                    <%= f.label :password, "New password" %>
                     <% if @minimum_password_length %>
                     <em>(<%= @minimum_password_length %> characters minimum)</em>
                     <% end %><br />
@@ -81,7 +81,7 @@
                 </div>
                 <div class="large-6 columns">
                   <div class="field">
-                    <%= f.label :password_confirmation %><br />
+                    <%= f.label :password_confirmation, "Confirm password change" %><br />
                     <%= f.password_field :password_confirmation, autocomplete: "off" %>
                   </div>
                 </div>
