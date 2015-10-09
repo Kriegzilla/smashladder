@@ -74,7 +74,7 @@ class GamesController < ApplicationController
   def rank_adjust
     users = User.order(wins: :desc, losses: :asc)
     users.each_with_index do |user, index|
-      user.rank = index+1
+      user.rank = index + 1
       user.save
     end
   end
