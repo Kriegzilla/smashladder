@@ -16,6 +16,8 @@ class Game < ActiveRecord::Base
       User.find(player_2_id)
     elsif player_1_stock > player_2_stock
       User.find(player_1_id)
+    else
+      User.first
     end
   end
 
@@ -24,6 +26,8 @@ class Game < ActiveRecord::Base
       User.find(player_1_id)
     elsif player_1_stock > player_2_stock
       User.find(player_2_id)
+    else
+      User.first
     end
   end
 

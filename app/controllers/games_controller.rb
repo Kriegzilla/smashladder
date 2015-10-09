@@ -57,6 +57,21 @@ class GamesController < ApplicationController
     redirect_to users_path
   end
 
+  def destroy
+    @game = Game.find(params[:id])
+    if signed_in? && (current_user == @game.player_2 || current_user == @game.player_1 )
+      @game.destroy
+      rank_adjust
+      flash[:success] = 'Game deleted successfully!'
+      redirect_to users_path
+    elsif !signed_in?
+      authenticate_user!
+    else
+      flash[:alert] = "Stop trying to delete things that aren't yours!"
+      redirect_to game_path(@game)
+    end
+  end
+
   protected
 
   def game_params
