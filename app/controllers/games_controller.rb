@@ -51,6 +51,7 @@ class GamesController < ApplicationController
       end
       p1.save
       p2.save
+      rank_adjust
       flash[:success] = "Game Approved!"
     end
     redirect_to users_path
@@ -68,5 +69,13 @@ class GamesController < ApplicationController
       :stage_id,
       :description
       )
+  end
+
+  def rank_adjust
+    users = User.order(wins: :desc, losses: :asc)
+    users.each_with_index do |user, index|
+      user.rank = index + 1
+      user.save
+    end
   end
 end
