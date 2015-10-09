@@ -22,11 +22,16 @@ class GamesController < ApplicationController
     @game.player_1_id = current_user.id
     @users = User.where.not(id: current_user.id)
     @stages = Stage.all
-    if @game.save
-      flash[:success] = "Game saved!"
-      redirect_to games_path
+    if @game.has_winner_and_loser?
+      if @game.save
+        flash[:success] = "Game saved!"
+        redirect_to games_path
+      else
+        flash[:alert] = @game.errors.full_messages.join(", ")
+        render :new
+      end
     else
-      flash[:alert] = @game.errors.full_messages.join(", ")
+      flash[:alert] = "Game must have a winner and loser!"
       render :new
     end
   end

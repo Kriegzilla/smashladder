@@ -48,6 +48,6 @@ feature 'user adds a game', %{
     click_on "Add a Game"
     click_on "Submit"
 
-    expect(page).to have_content("Player 2 can't be blank")
+    expect(page).to have_content("Game must have a winner and loser!")
   end
 end

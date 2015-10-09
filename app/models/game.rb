@@ -11,6 +11,18 @@ class Game < ActiveRecord::Base
   validates :stage_id, presence: true
   validates :description, length: { maximum: 500 }
 
+  def has_winner_and_loser?
+    if player_1_stock == 0 && player_2_stock == 0
+      errors.add(:game, "must have a winner")
+      return false
+    elsif player_1_stock > 0 && player_2_stock > 0
+      errors.add(:game, "must have a loser")
+      return false
+    else
+      return true
+    end
+  end
+
   def winner
     if player_1_stock < player_2_stock
       User.find(player_2_id)
