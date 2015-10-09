@@ -24,7 +24,7 @@ feature 'user deletes a game', %{
                 player_2_stock: 0,
                 stage: fd,
                 p2_confirmation: false,
-                )
+               )
     click_on "Your Pending Games"
   end
 

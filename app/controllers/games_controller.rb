@@ -59,7 +59,7 @@ class GamesController < ApplicationController
 
   def destroy
     @game = Game.find(params[:id])
-    if signed_in? && (current_user == @game.player_2 || current_user == @game.player_1 )
+    if signed_in? && (current_user == @game.player_2 || current_user == @game.player_1)
       @game.destroy
       rank_adjust
       flash[:success] = 'Game deleted successfully!'
