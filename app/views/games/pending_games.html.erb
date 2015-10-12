@@ -1,51 +1,45 @@
-<div class="row">
-  <div class="large-12 columns">
-    <div class="row">
-      <div class="panel small-9 small-centered large-centered columns">
-        <table id="leaderboard">
-            <h1>
-              Pending Approval:
-            </h1>
-            <% if @games.length == 0 %>
-              <td>
-                No games are pending! Go play more!
-              </td>
-            <% else %>
-              <td>
-                Player 1
-              </td>
-              <td>
-                Player 2
-              </td>
-            <% end %>
-          <% @games.each do |game| %>
-            <tr id="<%= game.id %>">
-              <td class="p1">
-                <% if game.winner.id == game.player_1_id %>
-                <%= "#{User.find(game.player_1_id).username} (W)" %>
-                <% else %>
-                <%= "#{User.find(game.player_1_id).username} (L)" %>
-                <% end %>
-              </td>
-              <td class="p2">
-                <% if game.winner.id == game.player_2_id %>
-                <%= "#{User.find(game.player_2_id).username} (W)" %>
-                <% else %>
-                <%= "#{User.find(game.player_2_id).username} (L)" %>
-                <% end %>
-              </td>
-              <td>
-                <%= link_to "Details", game_path(game) %>
-                <% if game.player_2 == current_user %>
-                  <%= button_to "Approve this!", game_approve_path(game), class: "button tiny"%>
-                <% else %>
-                  (Waiting on your opponent's approval)
-                <% end %>
-              </td>
-            </tr>
+<div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
+  <table>
+      <h1>
+        Pending Approval:
+      </h1>
+      <% if @games.length == 0 %>
+        <td>
+          No games are pending! Go play more!
+        </td>
+      <% else %>
+        <td>
+          Player 1
+        </td>
+        <td>
+          Player 2
+        </td>
+      <% end %>
+    <% @games.each do |game| %>
+      <tr id="<%= game.id %>">
+        <td class="p1">
+          <% if game.winner.id == game.player_1_id %>
+          <%= link_to "#{User.find(game.player_1_id).username} (W)", user_path(game.player_1) %>
+          <% else %>
+          <%= link_to "#{User.find(game.player_1_id).username} (L)", user_path(game.player_1) %>
           <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
+        </td>
+        <td class="p2">
+          <% if game.winner.id == game.player_2_id %>
+          <%= link_to "#{User.find(game.player_2_id).username} (W)", user_path(game.player_2) %>
+          <% else %>
+          <%= link_to "#{User.find(game.player_2_id).username} (L)", user_path(game.player_2) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to "Details", game_path(game) %>
+          <% if game.player_2 == current_user %>
+            <%= button_to "Approve this!", game_approve_path(game), class: "button tiny"%>
+          <% else %>
+            (Waiting on your opponent's approval)
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 </div>

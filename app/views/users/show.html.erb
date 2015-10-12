@@ -1,113 +1,147 @@
-<div class="row">
-  <div class="section-box text-center panel large-6 medium-8 small-12
-  large-centered medium-centered small-centered columns">
-    <%= image_tag(@user.avatar, class: "user-profile") %>
-    <h1 class="section-title">
-      <% if @user.crew_tag != nil %>
-        <%= @user.crew_tag %> <%= @user.username %>
-      <% else %>
-        <%= @user.username %></h1>
-      <% end %>
-    <h3 class="section-title"><%= @user.email %></h3>
-    <% if @user.character %>
-      <h3 class="section-title">Main: <%= image_tag @user.character.icon %></h3>
+
+<div class="section-box text-center panel large-7 medium-10 small-12
+large-centered medium-centered small-centered columns">
+  <%= image_tag(@user.avatar, class: "user-profile") %>
+  <h1 class="section-title">
+    <% if @user.crew_tag != nil %>
+      <%= @user.crew_tag %> <%= @user.username %>
+    <% else %>
+      <%= @user.username %></h1>
     <% end %>
-  </div>
-  <table class="panel small-9 small-centered large-centered columns">
-    <tr>
-      <td>
-        Wins
-      </td>
-      <td>
-        Losses
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= @user.wins %>
-      </td>
-      <td>
-        <%= @user.losses %>
-      </td>
-    </tr>
-  </table>
-  <% if current_user == @user %>
-  <div class="row content text-center">
-    <button data-remote="true" class="round info button button-edit-form">Account Settings</button>
-    <div class="hide editform">
-      <div class="account-box">
-        <div class="account-settings panel clearfix">
-          <%= form_for(@user, url: registration_path(@user), html: { method: :put }, class: "settings-form") do |f| %>
-            <fieldset>
-              <legend>Account Settings</legend>
+  <h3 class="section-title"><%= @user.email %></h3>
+  <% if @user.character %>
+    <h3 class="section-title">Main: <%= image_tag @user.character.icon %></h3>
+  <% end %>
+</div>
+<table class="panel small-12 medium-10 large-7 small-centered large-centered columns">
+  <tr>
+    <td>
+      Wins
+    </td>
+    <td>
+      Losses
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= @user.wins %>
+    </td>
+    <td>
+      <%= @user.losses %>
+    </td>
+  </tr>
+</table>
+<% if current_user == @user %>
+<div class="row content text-center">
+  <button data-remote="true" class="round info button button-edit-form">Account Settings</button>
+  <div class="hide editform">
+    <div class="account-box">
+      <div class="account-settings panel clearfix">
+        <%= form_for(@user, url: registration_path(@user), html: { method: :put }, class: "settings-form") do |f| %>
+          <fieldset>
+            <legend>Account Settings</legend>
 
-              <div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :crew_tag %><br />
-                    <%= f.text_field :crew_tag %>
-                  </div>
-                </div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :username %>
-                    <i>(20 characters maximum)</i><br />
-                    <%= f.text_field :username %>
-                  </div>
-                </div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :email, "New Email Address" %><br />
-                    <%= f.email_field :email, autofocus: true %>
-                  </div>
-                </div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :character_id, "Your Main"%><br />
-                    <%= f.collection_select :character_id, Character.all, :id, :name %>
-                  </div>
+            <div>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :crew_tag %><br />
+                  <%= f.text_field :crew_tag %>
                 </div>
               </div>
-
-              <div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :password, "New password" %>
-                    <% if @minimum_password_length %>
-                    <em>(<%= @minimum_password_length %> characters minimum)</em>
-                    <% end %><br />
-                    <%= f.password_field :password, autocomplete: "off" %>
-                  </div>
-                </div>
-                <div class="large-6 columns">
-                  <div class="field">
-                    <%= f.label :password_confirmation, "Confirm password change" %><br />
-                    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-                  </div>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :username %>
+                  <i>(20 characters maximum)</i><br />
+                  <%= f.text_field :username %>
                 </div>
               </div>
-
-              <div class="field">
-                <%= f.label :current_password %> <i>** we need your current password to confirm your changes **</i>
-                <%= f.password_field :current_password, autocomplete: "off" %>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :email, "New Email Address" %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
               </div>
-
-              <div class="field">
-                <label>My profile photo</label>
-                <%= image_tag(@user.avatar, class:"user-profile") if @user.avatar %>
-                <%= f.url_field :avatar %>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :character_id, "Your Main"%><br />
+                  <%= f.collection_select :character_id, Character.all, :id, :name %>
+                </div>
               </div>
+            </div>
 
-              <div class="actions">
-                <ul class="right button-group round even-2 large-4 medium-8 small-12 columns">
-                  <li><%= link_to "Back", :back, class: "small secondary button" %></li>
-                  <li><%= f.submit "Update", class: "small button" %></li>
-                </ul>
+            <div>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :password, "New password" %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
               </div>
-            </fieldset>
-          <% end %>
-        </div>
+              <div class="large-6 columns">
+                <div class="field">
+                  <%= f.label :password_confirmation, "Confirm password change" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label :current_password %> <i>** we need your current password to confirm your changes **</i>
+              <%= f.password_field :current_password, autocomplete: "off" %>
+            </div>
+
+            <div class="field">
+              <label>My profile photo</label>
+              <%= image_tag(@user.avatar, class:"user-profile") if @user.avatar %>
+              <%= f.url_field :avatar %>
+            </div>
+
+            <div class="actions">
+              <ul class="right button-group round even-2 large-4 medium-8 small-12 columns">
+                <li><%= link_to "Back", :back, class: "small secondary button" %></li>
+                <li><%= f.submit "Update", class: "small button" %></li>
+              </ul>
+            </div>
+          </fieldset>
+        <% end %>
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+</div>
+<div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
+  <table>
+      <h1>
+        Games:
+      </h1>
+      <td>
+        Player 1
+      </td>
+      <td>
+        Player 2
+      </td>
+      <% @games.each do |game| %>
+        <tr id="<%= game.id %>">
+          <td class="p1">
+            <% if game.winner.id == game.player_1_id %>
+            <%= link_to "#{User.find(game.player_1_id).username} (W)", user_path(game.player_1) %>
+            <% else %>
+            <%= link_to "#{User.find(game.player_1_id).username} (L)", user_path(game.player_1) %>
+            <% end %>
+          </td>
+          <td class="p2">
+            <% if game.winner.id == game.player_2_id %>
+            <%= link_to "#{User.find(game.player_2_id).username} (W)", user_path(game.player_2) %>
+            <% else %>
+            <%= link_to "#{User.find(game.player_2_id).username} (L)", user_path(game.player_2) %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to "Details", game_path(game) %>
+          </td>
+        </tr>
+      <% end %>
+  </table>
+</div>

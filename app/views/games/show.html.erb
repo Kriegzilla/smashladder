@@ -1,6 +1,6 @@
-<div class="row">
-  <div class="section-box text-center panel large-6 medium-8 small-12
-  large-centered medium-centered small-centered columns">
+
+<div class="section-box text-center panel large-7 medium-10 small-12
+large-centered medium-centered small-centered columns">
   <%= image_tag @game.player_1.avatar, class: "thumbnail" %>
   <%= @game.players %>
   <%= image_tag @game.player_2.avatar, class: "thumbnail" %>
@@ -11,16 +11,16 @@
     <%= button_to "Delete this?", @game, method: :delete, class: "button tiny alert" %>
   <% end %>
   </div>
-  <table class="panel small-9 small-centered large-centered columns">
+  <table class="panel small-12 medium-10 large-7 small-centered large-centered columns">
     <tr>
       <td>
         Players:
       </td>
       <td>
-        <%= @game.player_1.crew_tag %><%= @game.player_1.username %>
+        <%= @game.player_1.crew_tag %><%= link_to @game.player_1.username, user_path(@game.player_1) %>
       </td>
       <td>
-        <%= @game.player_2.crew_tag %><%= @game.player_2.username %>
+        <%= @game.player_2.crew_tag %><%= link_to @game.player_2.username, user_path(@game.player_2) %>
       </td>
     </tr>
     <tr>
@@ -61,8 +61,7 @@
       </td>
     </tr>
   </table>
-  <div class="panel small-9 small-centered large-centered columns">
+<div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
     Description:
     <%= @game.description %>
-  </div>
 </div>
