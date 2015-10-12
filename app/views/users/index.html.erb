@@ -1,49 +1,43 @@
-<div class="row">
-  <div class="large-12 columns">
-    <div class="row">
-      <div class="panel small-9 small-centered large-centered columns">
-        <% if current_user && current_user.games.where(player_2_id: current_user.id, p2_confirmation: false).length != 0 %>
-          <%= link_to "You have games to approve!", pending_games_games_path %>
-        <% end %>
-        <table id="leaderboard">
-            <h1>
-              WHO'S THE BEST???
-            </h1>
-            <td>
-              Rank
-            </td>
-            <td>
-              Smasher
-            </td>
-            <td>
-              Wins
-            </td>
-            <td>
-              Losses
-            </td>
-          <% @users.each do |user| %>
-            <tr id="<%= user.id %>">
-              <td class="rank">
-                <%= user.rank %>
-              </td>
-              <td class="username">
-                <% if user.crew_tag != nil %>
-                  <%= user.crew_tag %>
-                  <%= link_to user.username, user_path(user) %>
-                <% else %>
-                  <%= link_to user.username, user_path(user) %>
-                <% end %>
-              </td>
-              <td class="wins">
-                <%= user.wins %>
-              </td>
-              <td class="losses">
-                <%= user.losses %>
-              </td>
-            </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
+  <div class="panel large-7 small-centered large-centered columns radius">
+    <% if current_user && current_user.games.where(player_2_id: current_user.id, p2_confirmation: false).length != 0 %>
+      <%= link_to "You have games to approve!", pending_games_games_path %>
+    <% end %>
+    <table id="leaderboard">
+        <h1>
+          WHO'S THE BEST???
+        </h1>
+        <td>
+          Rank
+        </td>
+        <td>
+          Smasher
+        </td>
+        <td>
+          Wins
+        </td>
+        <td>
+          Losses
+        </td>
+      <% @users.each do |user| %>
+        <tr id="<%= user.id %>">
+          <td class="rank">
+            <%= user.rank %>
+          </td>
+          <td class="username">
+            <% if user.crew_tag != nil %>
+              <%= user.crew_tag %>
+              <%= link_to user.username, user_path(user) %>
+            <% else %>
+              <%= link_to user.username, user_path(user) %>
+            <% end %>
+          </td>
+          <td class="wins">
+            <%= user.wins %>
+          </td>
+          <td class="losses">
+            <%= user.losses %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
   </div>
-</div>
