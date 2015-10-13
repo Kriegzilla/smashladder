@@ -13,9 +13,34 @@ class User < ActiveRecord::Base
     Game.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
 
-  def rival
-    # find who you've lost to the most
+  def rivals
     player_games = games
-    player_games.where("loser = ?", self)
+    lost_games = []
+    rivals = {}
+    player_games.each do |game|
+      if game.loser == self
+        lost_games << game
+      end
+    end
+    lost_games.each do |game|
+      if rivals.has_key?(game.winner.username)
+        rivals[game.winner.username] += 1
+      else
+        rivals[game.winner.username] = 1
+      end
+    end
+    if rivals == {}
+      rivals = {"n/a" => 0}
+    else
+      rivals = rivals.sort{|a,b| b[1] <=> a[1]}
+    end
+  end
+
+  def nemesis
+    if rivals == {"n/a" => 0}
+      nemesis = ["Undefeated!", 0]
+    else
+      nemesis = rivals.sort{|a,b| b[1] <=> a[1]}.first
+    end
   end
 end
