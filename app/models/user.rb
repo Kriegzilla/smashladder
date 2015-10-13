@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   end
 
   def rival
-    #find who you've lost to the most
-    player_games = self.games
+    # find who you've lost to the most
+    player_games = games
     player_games.where("loser = ?", self)
   end
 end

@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        players = @users.map{ |user| user.username }
-        wins = @users.map{ |user| user.wins }
+        players = @users.map { |user| user.username }
+        wins = @users.map { |user| user.wins }
         render json: [players, wins]
       end
     end

@@ -1,14 +1,14 @@
 $(function () {
 
   $.ajax({
-    method: "GET",
+    method: 'GET',
     url: window.location.pathname,
-    dataType: "json"
+    dataType: 'json'
   })
 
   .done(function(data){
-    var users = data[0]
-    var wins = data[1]
+    var users = data[0];
+    var wins = data[1];
     $('#container').highcharts({
         chart: {
             type: 'bar'
