@@ -1,31 +1,31 @@
 $(function () {
 
   $.ajax({
-    method: 'GET',
+    method: "GET",
     url: window.location.pathname,
-    dataType: 'json'
+    dataType: "json"
   })
 
   .done(function(data){
     var users = data[0];
     var wins = data[1];
-    $('#container').highcharts({
+    $("#container").highcharts({
         chart: {
-            type: 'bar'
+            type: "bar"
         },
         title: {
-            text: 'Wins by Player'
+            text: "Wins by Player"
         },
         xAxis: {
             categories: users
         },
         yAxis: {
             title: {
-                text: 'Wins'
+                text: "Wins"
             }
         },
         series: [{
-            name: 'Test',
+            name: "Test",
             data: wins
         }]
     });
