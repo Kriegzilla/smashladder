@@ -17,10 +17,10 @@ large-centered medium-centered small-centered columns">
         Players:
       </td>
       <td>
-        <%= @game.player_1.crew_tag %><%= link_to @game.player_1.username, user_path(@game.player_1) %>
+        <%= @game.player_1.crew_tag %> <%= link_to @game.player_1.username, user_path(@game.player_1) %>
       </td>
       <td>
-        <%= @game.player_2.crew_tag %><%= link_to @game.player_2.username, user_path(@game.player_2) %>
+        <%= @game.player_2.crew_tag %> <%= link_to @game.player_2.username, user_path(@game.player_2) %>
       </td>
     </tr>
     <tr>
@@ -61,7 +61,9 @@ large-centered medium-centered small-centered columns">
       </td>
     </tr>
   </table>
-<div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
-    Description:
-    <%= @game.description %>
-</div>
+<% unless @game.description == "" %>
+  <div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
+      Description:
+      <%= @game.description %>
+  </div>
+<% end %>
