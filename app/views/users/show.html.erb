@@ -9,9 +9,10 @@ large-centered medium-centered small-centered columns">
       <%= @user.username %></h1>
     <% end %>
   <h3 class="section-title"><%= @user.email %></h3>
-  <% if @user.character %>
-    <h3 class="section-title">Main: <%= image_tag @user.character.icon %></h3>
+  <% if current_user == @user %>
+    <%= render 'account_settings' %>
   <% end %>
+
 </div>
 <table class="panel small-12 medium-10 large-7 small-centered large-centered columns">
   <tr>
@@ -21,6 +22,11 @@ large-centered medium-centered small-centered columns">
     <td>
       Losses
     </td>
+    <% if @user.character %>
+      <td>
+        Main
+      </td>
+    <% end %>
   </tr>
   <tr>
     <td>
@@ -29,89 +35,16 @@ large-centered medium-centered small-centered columns">
     <td>
       <%= @user.losses %>
     </td>
+    <% if @user.character %>
+      <td>
+        <%= image_tag @user.character.icon %>
+      </td>
+    <% end %>
   </tr>
 </table>
-<% if current_user == @user %>
-<div class="row content text-center">
-  <button data-remote="true" class="round info button button-edit-form">Account Settings</button>
-  <div class="hide editform">
-    <div class="account-box">
-      <div class="account-settings panel clearfix">
-        <%= form_for(@user, url: registration_path(@user), html: { method: :put }, class: "settings-form") do |f| %>
-          <fieldset>
-            <legend>Account Settings</legend>
 
-            <div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :crew_tag %><br />
-                  <%= f.text_field :crew_tag %>
-                </div>
-              </div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :username %>
-                  <i>(20 characters maximum)</i><br />
-                  <%= f.text_field :username %>
-                </div>
-              </div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :email, "New Email Address" %><br />
-                  <%= f.email_field :email, autofocus: true %>
-                </div>
-              </div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :character_id, "Your Main"%><br />
-                  <%= f.collection_select :character_id, Character.all, :id, :name %>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :password, "New password" %>
-                  <% if @minimum_password_length %>
-                  <em>(<%= @minimum_password_length %> characters minimum)</em>
-                  <% end %><br />
-                  <%= f.password_field :password, autocomplete: "off" %>
-                </div>
-              </div>
-              <div class="large-6 columns">
-                <div class="field">
-                  <%= f.label :password_confirmation, "Confirm password change" %><br />
-                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-                </div>
-              </div>
-            </div>
-
-            <div class="field">
-              <%= f.label :current_password %> <i>** we need your current password to confirm your changes **</i>
-              <%= f.password_field :current_password, autocomplete: "off" %>
-            </div>
-
-            <div class="field">
-              <label>My profile photo</label>
-              <%= image_tag(@user.avatar, class:"user-profile") if @user.avatar %>
-              <%= f.url_field :avatar %>
-            </div>
-
-            <div class="actions">
-              <ul class="right button-group round even-2 large-4 medium-8 small-12 columns">
-                <li><%= link_to "Back", :back, class: "small secondary button" %></li>
-                <li><%= f.submit "Update", class: "small button" %></li>
-              </ul>
-            </div>
-          </fieldset>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <% end %>
-</div>
-<div class="panel small-12 medium-10 large-7 small-centered large-centered columns">
+<div class="panel radius small-12 medium-10 large-7 small-centered large-centered columns">
+  <div id="container" style="width:100%; height:250px;"></div>
   <table>
       <h1>
         Games:

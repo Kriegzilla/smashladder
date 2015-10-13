@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
   def games
     Game.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
+
+  def rival
+    # find who you've lost to the most
+    player_games = games
+    player_games.where("loser = ?", self)
+  end
 end
