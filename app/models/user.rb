@@ -30,17 +30,17 @@ class User < ActiveRecord::Base
       end
     end
     if rivals == {}
-      rivals = {"n/a" => 0}
+      rivals = { "n/a" => 0 }
     else
-      rivals = rivals.sort{|a,b| b[1] <=> a[1]}
+      rivals = rivals.sort{ |a, b| b[1] <=> a[1] }
     end
   end
 
   def nemesis
-    if rivals == {"n/a" => 0}
-      nemesis = ["Undefeated!", 0]
+    if rivals == { "n/a" => 0 }
+      ["Undefeated!", 0]
     else
-      nemesis = rivals.sort{|a,b| b[1] <=> a[1]}.first
+      rivals.sort{ |a, b| b[1] <=> a[1] }.first
     end
   end
 end
