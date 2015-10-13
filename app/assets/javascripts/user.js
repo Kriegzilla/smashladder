@@ -7,25 +7,25 @@ $(function () {
   })
 
   .done(function(data){
-    var users = data[0];
+    var rivals = data[0];
     var wins = data[1];
     $("#container").highcharts({
         chart: {
             type: "bar"
         },
         title: {
-            text: "Wins by Player"
+            text: "Your Top Rivals"
         },
         xAxis: {
-            categories: users
+            categories: rivals
         },
         yAxis: {
             title: {
-                text: "Wins"
+                text: "Losses to each:"
             }
         },
         series: [{
-            name: "Test",
+            name: "Rivals",
             data: wins
         }]
     });

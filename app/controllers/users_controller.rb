@@ -5,15 +5,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @users = User.all
     @user = User.find(params[:id])
     @games = @user.games
     respond_to do |format|
       format.html
       format.json do
-        players = @users.map { |user| user.username }
-        wins = @users.map { |user| user.wins }
-        render json: [players, wins]
+        rivals = @user.rivals
+        rival_names = []
+        rival_wins = []
+        rivals.each do |rival|
+          rival_names << rival[0]
+          rival_wins << rival[1]
+        end
+        render json: [rival_names, rival_wins]
       end
     end
   end
