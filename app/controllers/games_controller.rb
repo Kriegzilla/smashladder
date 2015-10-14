@@ -59,7 +59,7 @@ class GamesController < ApplicationController
       rank_adjust
       flash[:success] = "Game Approved!"
     end
-    redirect_to users_path
+    redirect_to pending_games_games_path
   end
 
   def destroy
