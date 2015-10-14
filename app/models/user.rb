@@ -78,12 +78,12 @@ class User < ActiveRecord::Base
       if top_4.length < 4
         top_4[character] = play_count
       else
-        top_4 = top_4.sort{ |a, b| b[1] <=> a[1] }
+        top_4 = top_4.sort { |a, b| b[1] <=> a[1] }
         if play_count > top_4[3][1]
           top_4.pop
           top_4 << [character, play_count]
         end
-        top_4 = top_4.sort{ |a, b| b[1] <=> a[1] }
+        top_4 = top_4.sort { |a, b| b[1] <=> a[1] }
       end
     end
     top_4
@@ -117,5 +117,4 @@ class User < ActiveRecord::Base
     end
     best_character
   end
-
 end
