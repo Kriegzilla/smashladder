@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   end
 
   def confirmed_games
-    Game.where(p2_confirmation: true).where("player_1_id = ? OR player_2_id = ?", id, id)
+    g = Game.where(p2_confirmation: true)
+    g.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
 
   def games_won
