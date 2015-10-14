@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'homes#index'
   devise_for :users
+  resources :homes, only: :index
   resources :users, only: [:index, :show, :destroy]
   resources :games, only: [:index, :show, :new, :create, :destroy] do
     get 'pending_games', on: :collection
