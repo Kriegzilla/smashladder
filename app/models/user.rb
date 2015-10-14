@@ -13,9 +13,13 @@ class User < ActiveRecord::Base
     Game.where("player_1_id = ? OR player_2_id = ?", id, id)
   end
 
+  def confirmed_games
+    Game.where(p2_confirmation: true).where("player_1_id = ? OR player_2_id = ?", id, id)
+  end
+
   def games_won
     games_won = []
-    games.each do |game|
+    confirmed_games.each do |game|
       if game.winner == self
         games_won << game
       end
@@ -24,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def rivals
-    player_games = games
+    player_games = confirmed_games
     lost_games = []
     rivals = {}
     player_games.each do |game|
@@ -56,7 +60,7 @@ class User < ActiveRecord::Base
 
   def played_with(character)
     played_with_chara = []
-    games.each do |game|
+    confirmed_games.each do |game|
       if game.player_1 == self
         if game.player_1_character == character
           played_with_chara << game
