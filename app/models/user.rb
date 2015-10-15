@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   def wins_and_losses
     players = opponents
     win_loss = []
-    players.each do |user, index|
+    players.each do |user|
       wins = wins_against(user)
       losses = losses_against(user)
       win_loss << [user, wins, losses]

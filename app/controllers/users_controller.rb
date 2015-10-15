@@ -36,7 +36,7 @@ class UsersController < ApplicationController
                       losses_against,
                       most_played_names,
                       wins_with
-                    ]
+                     ]
       end
     end
   end

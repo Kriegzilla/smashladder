@@ -54,10 +54,9 @@ $(function () {
 
             tooltip: {
                 formatter: function () {
-                    return "<b>" + this.series.name + " vs. "
-                    + this.point.category +
-                    ": "
-                    + Math.abs(this.point.y) +"</b><br/>";
+                    return "<b>" + this.series.name + " vs. " +
+                    this.point.category + ": " +
+                    Math.abs(this.point.y) +"</b><br/>";
                 }
             },
 
