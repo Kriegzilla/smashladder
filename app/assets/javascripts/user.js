@@ -7,30 +7,67 @@ $(function () {
   })
 
   .done(function(data){
-    var rivals = data[0];
-    var wins = data[1];
-    var mostPlayedNames = data[2];
-    var winsWith = data[3];
-    $("#rivals").highcharts({
-        chart: {
-            type: "bar"
-        },
-        title: {
-            text: "Top Rivals"
-        },
-        xAxis: {
-            categories: rivals
-        },
-        yAxis: {
+    var OpponentNames = data[0];
+    var WinsAgainst = data[1];
+    var LossesAgainst = data[2];
+    var mostPlayedNames = data[3];
+    var winsWith = data[4];
+
+    $('#rivals').highcharts({
+            chart: {
+                type: "bar"
+            },
             title: {
-                text: "Losses to each:"
-            }
-        },
-        series: [{
-            name: "Rivals",
-            data: wins
-        }]
-    });
+                text: "Wins and Losses by Opponent"
+            },
+            xAxis: [{
+                categories: OpponentNames,
+                reversed: false,
+                labels: {
+                    step: 1
+                }
+            }, { // mirror axis on right side
+                opposite: true,
+                reversed: false,
+                categories: OpponentNames,
+                linkedTo: 0,
+                labels: {
+                    step: 1
+                }
+            }],
+            yAxis: {
+                title: {
+                    text: null
+                },
+                labels: {
+                    formatter: function () {
+                        return Math.abs(this.value);
+                    }
+                }
+            },
+
+            plotOptions: {
+                series: {
+                    stacking: "normal"
+                }
+            },
+
+            tooltip: {
+                formatter: function () {
+                    return "<b>" + this.series.name + " vs. " +
+                    this.point.category + ": " +
+                    Math.abs(this.point.y) +"</b><br/>";
+                }
+            },
+
+            series: [{
+                name: "Losses",
+                data: LossesAgainst
+            }, {
+                name: "Wins",
+                data: WinsAgainst
+            }]
+        });
 
     $("#charawins").highcharts({
         chart: {
@@ -45,10 +82,13 @@ $(function () {
         yAxis: {
             title: {
                 text: "Wins with each:"
+            },
+            labels: {
+                step: 1
             }
         },
         series: [{
-            name: "Characters",
+            name: "Wins with",
             data: winsWith
         }]
     });

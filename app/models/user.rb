@@ -51,6 +51,52 @@ class User < ActiveRecord::Base
     end
   end
 
+  def opponents
+    player_games = confirmed_games
+    opponents = []
+    player_games.each do |game|
+      if game.player_1 == self && !opponents.include?(game.player_2.username)
+        opponents << game.player_2.username
+      elsif game.player_2 == self && !opponents.include?(game.player_1.username)
+        opponents << game.player_1.username
+      end
+    end
+    opponents
+  end
+
+  def wins_against(user)
+    player_games = confirmed_games
+    wins = 0
+    player_games.each do |game|
+      if game.loser.username == user
+        wins += 1
+      end
+    end
+    wins
+  end
+
+  def losses_against(user)
+    player_games = confirmed_games
+    losses = 0
+    player_games.each do |game|
+      if game.winner.username == user
+        losses += 1
+      end
+    end
+    losses
+  end
+
+  def wins_and_losses
+    players = opponents
+    win_loss = []
+    players.each do |user|
+      wins = wins_against(user)
+      losses = losses_against(user)
+      win_loss << [user, wins, losses]
+    end
+    win_loss
+  end
+
   def nemesis
     if rivals == { "n/a" => 0 }
       ["Undefeated!", 0]

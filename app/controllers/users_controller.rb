@@ -12,15 +12,17 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.json do
-        rivals = @user.rivals
-        rival_names = []
-        rival_wins = []
+        wins_and_losses = @user.wins_and_losses
+        opponent_names = []
+        wins_against = []
+        losses_against = []
         most_played = []
         wins_with = []
         most_played_names = []
-        rivals.each do |rival|
-          rival_names << rival[0]
-          rival_wins << rival[1]
+        wins_and_losses.each do |player|
+          opponent_names << player[0]
+          wins_against << player[1]
+          losses_against << -player[2]
         end
         @user.most_played_characters.each do |chara|
           most_played << chara[0]
@@ -29,7 +31,12 @@ class UsersController < ApplicationController
           most_played_names << chara.name
           wins_with << @user.won_with(chara).length
         end
-        render json: [rival_names, rival_wins, most_played_names, wins_with]
+        render json: [opponent_names,
+                      wins_against,
+                      losses_against,
+                      most_played_names,
+                      wins_with
+                     ]
       end
     end
   end
