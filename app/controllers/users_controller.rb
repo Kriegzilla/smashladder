@@ -31,7 +31,12 @@ class UsersController < ApplicationController
           most_played_names << chara.name
           wins_with << @user.won_with(chara).length
         end
-        render json: [opponent_names, wins_against, losses_against, most_played_names, wins_with]
+        render json: [opponent_names,
+                      wins_against,
+                      losses_against,
+                      most_played_names,
+                      wins_with
+                    ]
       end
     end
   end

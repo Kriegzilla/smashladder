@@ -7,21 +7,21 @@ $(function () {
   })
 
   .done(function(data){
-    var opponent_names = data[0];
-    var wins_against = data[1];
-    var losses_against = data[2];
+    var OpponentNames = data[0];
+    var WinsAgainst = data[1];
+    var LossesAgainst = data[2];
     var mostPlayedNames = data[3];
     var winsWith = data[4];
 
     $('#rivals').highcharts({
             chart: {
-                type: 'bar'
+                type: "bar"
             },
             title: {
-                text: 'Wins and Losses by Opponent'
+                text: "Wins and Losses by Opponent"
             },
             xAxis: [{
-                categories: opponent_names,
+                categories: OpponentNames,
                 reversed: false,
                 labels: {
                     step: 1
@@ -29,7 +29,7 @@ $(function () {
             }, { // mirror axis on right side
                 opposite: true,
                 reversed: false,
-                categories: opponent_names,
+                categories: OpponentNames,
                 linkedTo: 0,
                 labels: {
                     step: 1
@@ -48,23 +48,25 @@ $(function () {
 
             plotOptions: {
                 series: {
-                    stacking: 'normal'
+                    stacking: "normal"
                 }
             },
 
             tooltip: {
                 formatter: function () {
-                    return '<b>' + this.series.name + ' vs. ' + this.point.category +
-                    ': ' + Highcharts.numberFormat(Math.abs(this.point.y), 0) +'</b><br/>';
+                    return "<b>" + this.series.name + " vs. "
+                    + this.point.category +
+                    ": "
+                    + Math.abs(this.point.y) +"</b><br/>";
                 }
             },
 
             series: [{
-                name: 'Losses',
-                data: losses_against
+                name: "Losses",
+                data: LossesAgainst
             }, {
-                name: 'Wins',
-                data: wins_against
+                name: "Wins",
+                data: WinsAgainst
             }]
         });
 
