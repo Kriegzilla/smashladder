@@ -50,5 +50,9 @@ table {
 
 .account-settings {
   color: $primary-color;
+}
 
+.hide-height {
+  height: 0;
+  overflow: hidden;
 }
