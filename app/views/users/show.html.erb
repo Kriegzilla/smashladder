@@ -44,8 +44,13 @@ large-centered medium-centered small-centered columns">
 </table>
 
 <div class="panel text-center radius small-12 medium-10 large-7 small-centered large-centered columns">
-  <div id="rivals" style="width:100%; height:250px;"></div>
-  <div id="charawins" style="width:100%; height:250px;"></div>
+  <div class="row content text-center">
+    <button data-remote="true" class="round info button button-charts">Player Records</button>
+    <div class="hide-height charts">
+      <div id="rivals" style="width:100%; height:250px;"></div>
+      <div id="charawins" style="width:100%; height:250px;"></div>
+    </div>
+  </div>
   <div class="row"></div>
   <h3>Nemesis: <%= @user.nemesis[0] %> with <%= @user.nemesis[1] %> losses.</h3>
   <h3>Best Character: <%= @best_character.name %> with <%= @wins_with_best %> wins.</h3>
