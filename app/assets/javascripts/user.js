@@ -2,7 +2,7 @@ $(function () {
 
   $.ajax({
     method: "GET",
-    url: window.location.pathname,
+    url: window.location.pathname + "&ajax=1",
     dataType: "json"
   })
 
