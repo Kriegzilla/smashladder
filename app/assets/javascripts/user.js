@@ -62,10 +62,12 @@ $(function () {
 
             series: [{
                 name: "Losses",
-                data: LossesAgainst
+                data: LossesAgainst,
+                color: "black"
             }, {
                 name: "Wins",
-                data: WinsAgainst
+                data: WinsAgainst,
+                color: "#ef9700"
             }]
         });
 
@@ -74,19 +76,22 @@ $(function () {
             type: "bar"
         },
         title: {
-            text: "Best Characters"
+            text: "Favorite Characters"
         },
         xAxis: {
             categories: mostPlayedNames
         },
         yAxis: {
             title: {
-                text: "Wins with each:"
+                text: ""
             },
             labels: {
                 step: 1
             }
         },
+        colors: [
+          "#ef9700"
+        ],
         series: [{
             name: "Wins with",
             data: winsWith
