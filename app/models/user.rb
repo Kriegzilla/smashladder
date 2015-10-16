@@ -93,7 +93,7 @@ class User < ActiveRecord::Base
       wins = wins_against(user)
       losses = losses_against(user)
       win_loss << [user, wins, losses]
-      win_loss = win_loss.sort{ |a, b| b[2] <=> a[2] }
+      win_loss = win_loss.sort { |a, b| b[2] <=> a[2] }
     end
     win_loss
   end

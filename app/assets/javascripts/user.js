@@ -91,8 +91,7 @@ $(function () {
         },
         colors: [
           "#ef9700"
-        ]
-        ,
+        ],
         series: [{
             name: "Wins with",
             data: winsWith
