@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.order(wins: :desc, losses: :asc)
+    rank_adjust
+    @users = User.order(rank: :asc, wins: :desc, losses: :asc)
   end
 
   def show
@@ -38,6 +39,16 @@ class UsersController < ApplicationController
                       wins_with
                      ]
       end
+    end
+  end
+
+  protected
+
+  def rank_adjust
+    users = User.order(wins: :desc, losses: :asc)
+    users.each_with_index do |user, index|
+      user.rank = index + 1
+      user.save
     end
   end
 
